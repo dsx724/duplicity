@@ -33,9 +33,8 @@ if ($db_count === 1){
 	$db = forward_static_call_array('array_intersect_key', $dbs);
 	print_r($db);
 } else {
-
+	echo 'Does not currently support comparison of more than two files';
+	exit(1);
 }
-
-
 
 ?>

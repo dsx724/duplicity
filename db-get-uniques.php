@@ -27,13 +27,16 @@ $dbs = array_map(function($db_file) use ($cwd) {
 $db_count = count($dbs);
 if ($db_count === 1){
 	$db = forward_static_call_array('array_merge_recursive', $dbs);
-	$db = array_filter($db,function($data){ return count($data) > 1; });
+	$db = array_filter($db,function($data){ return count($data) === 1; });
 	print_r($db);
 } else if ($db_count === 2) {
-	$db = forward_static_call_array('array_diff_key', $dbs);
+	$db1 = forward_static_call_array('array_diff_key', $dbs);
+	$db2 = forward_static_call_array('array_diff_key', array_reverse($dbs));
+	$db = array_merge($db1,$db2);
 	print_r($db);
 } else {
-
+	echo 'Does not currently support comparison of more than two files';
+	exit(1);
 }
 
 
