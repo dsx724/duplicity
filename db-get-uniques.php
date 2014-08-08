@@ -30,7 +30,7 @@ if ($db_count === 1){
 	$db = array_filter($db,function($data){ return count($data) > 1; });
 	print_r($db);
 } else if ($db_count === 2) {
-	$db = forward_static_call_array('array_intersect_key', $dbs);
+	$db = forward_static_call_array('array_diff_key', $dbs);
 	print_r($db);
 } else {
 
